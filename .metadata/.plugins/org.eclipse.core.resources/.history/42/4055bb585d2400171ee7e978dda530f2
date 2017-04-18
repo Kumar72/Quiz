@@ -1,9 +1,0 @@
-package entities;
-
-public class Quiz {
-	
-	//fields
-	private int id;
-	private String name;
-	
-}
