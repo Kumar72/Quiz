@@ -1,0 +1,16 @@
+package entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="quiz")
+public class Quiz {
+	
+	//fields
+	@Id
+	private int id;
+	private String name;
+	
+}

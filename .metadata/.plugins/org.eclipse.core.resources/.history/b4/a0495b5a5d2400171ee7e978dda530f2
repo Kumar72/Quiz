@@ -1,0 +1,10 @@
+package entities;
+
+public class Quiz {
+	
+	//fields
+	@Id
+	private int id;
+	private String name;
+	
+}
