@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<mvc:annotation-driven />	<!-- Scan our files for annotations -->
+	<context:component-scan base-package="controllers" />	<!-- Location of the controller -->
+
+	<bean id="quizDao" class="data.QuizDAOImpl" />		<!-- a bean calls the constructor so we have to reference the impl !theInterface -->
+
+	
+
+	<bean id="myEntityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> 	<!-- Content?? -->
+		<property name="persistenceUnitName" value="Persist" />		<!-- Go to JPA persistence file, and copy paste the name here -->
+	</bean>
+
+	<bean id="myTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">	<!-- Allows us to put @Transactional -->
+		<property name="entityManagerFactory" ref="myEntityManagerFactory" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="myTransactionManager" />
+
+</beans>

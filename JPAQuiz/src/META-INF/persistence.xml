@@ -5,9 +5,12 @@
 
 <!--This whole thing is the persistence Provider  -->
 	
-	<persistence-unit name="Quiz">		<!--Links to the Entity Manager  -->
+	<persistence-unit name="Persist">		<!--Links to the Entity Manager  -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		
 		<class>entities.Quiz</class>
+		<class>entities.Question</class>
+		
 		
 		<properties>
 			<!-- To make a Connection to the database  -->

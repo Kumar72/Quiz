@@ -28,7 +28,7 @@ public class QuizTest {
 	
 	 @Before
 	  public void setUp() throws Exception { 
-		 emf = Persistence.createEntityManagerFactory("Quiz");
+		 emf = Persistence.createEntityManagerFactory("Persist");
 		 em = emf.createEntityManager();
 		 qz = em.find(Quiz.class, 1);
 	 }
