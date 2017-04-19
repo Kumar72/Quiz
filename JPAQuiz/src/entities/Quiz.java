@@ -1,9 +1,12 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +18,9 @@ public class Quiz {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	
+	@OneToMany(mappedBy="quiz")
+	private List<Question> questions;
 	
 	//ctor
 	public Quiz() {
@@ -37,13 +43,23 @@ public class Quiz {
 		this.name = name;
 	}
 
+	public List<Question> getQuestions() {
+		return questions;
+	}
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
 	//ToString
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Quiz [name=");
 		builder.append(name);
+		builder.append(", questions=");
+		builder.append(questions);
 		builder.append("]");
 		return builder.toString();
 	}
+	
+
 }
