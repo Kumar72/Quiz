@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="Answer")
 public class Answer {
@@ -24,8 +26,9 @@ public class Answer {
 	@Column(name="is_correct")
 	private boolean correct;
 	
+	@JsonBackReference
 	@ManyToOne
-	@JoinColumn(name="questionId")
+	@JoinColumn(name="question_id")
 	private Question question;
 
 	//ctor

@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import data.QuizDAO;
+import entities.Question;
 import entities.Quiz;
 
 @RestController
@@ -95,6 +97,36 @@ public class QuizController {
 		return qDao.destroy(id);
 	}
 	
+	//------------------QUESTIONS----------------------------//
+	
+	
+	//DONE
+	@RequestMapping(value="quizzes/{id}/questions", method=RequestMethod.GET)
+	public Set<Question> showQuestions(@PathVariable int id){
+		return qDao.showQuestions(id);
+	}
+	
+	//DONE
+	@RequestMapping(value="quizzes/{id}/questions", method=RequestMethod.POST)
+	public Question createQuestions(@PathVariable int id,@RequestBody String jsonQuestion, HttpServletResponse res) {
+		res.setStatus(201);
+		ObjectMapper om = new ObjectMapper();
+		Question mappedQuestion;
+		try {
+			mappedQuestion = om.readValue(jsonQuestion, Question.class);
+			return qDao.createQuestion(id, mappedQuestion);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	//DONE
+	@RequestMapping(value="quizzes/{id}/questions/{questid}", method=RequestMethod.DELETE)
+	public  boolean destroyQuestions(@PathVariable int id,@PathVariable int questid) {
+		return qDao.destroyQuestion(id, questid);
+	}
 	
 }
 
@@ -106,6 +138,6 @@ public class QuizController {
 //public Quiz create(String quizJSON, HttpServletResponse res);							DONE
 //public Quiz update(int id, String quizJSON, HttpServletResponse res);					DONE
 //public boolean destroy(int id);														DONE
-//public Set<Question> showQuestions(int id);
+//public Set<Question> showQuestions(int id);											DONE
 //public Question createQuestions(int id, String questionJson, HttpServletResponse res);
 //public  boolean destroyQuestions(int id, int questid);

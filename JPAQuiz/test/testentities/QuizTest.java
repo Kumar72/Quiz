@@ -36,6 +36,8 @@ public class QuizTest {
 		 emf = Persistence.createEntityManagerFactory("Persist");
 		 em = emf.createEntityManager();
 		 qz = em.find(Quiz.class, 1);
+		 question = em.find(Question.class, 3);
+		 ans = em.find(Answer.class, 10);
 	 }
 	 @After
 	  public void tearDown() throws Exception { 
@@ -52,11 +54,11 @@ public class QuizTest {
 	 
 	 @Test
 	 public void test_question_mapping() {
-		 assertNull(question);
+		 assertEquals("States", question.getQuiz().getName());
 	 }
 	 
 	 @Test
 	 public void test_answer_mapping() {
-		 assertNull(ans);
+		 assertEquals("States", ans.getQuestion().getQuiz().getName());
 	 }
 }
