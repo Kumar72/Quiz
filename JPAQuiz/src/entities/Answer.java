@@ -77,8 +77,8 @@ public class Answer {
 		builder.append(answer);
 		builder.append(", correct=");
 		builder.append(correct);
-//		builder.append(", question=");
-//		builder.append(question);
+		builder.append(", question=");
+		builder.append(question);
 		builder.append("]");
 		return builder.toString();
 	}
