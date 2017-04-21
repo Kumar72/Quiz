@@ -53,17 +53,17 @@ public class Quiz {
 	public void setQuestions(Set<Question> questions) {
 		this.questions = questions;
 	}
-	//ToString
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Quiz [name=");
-		builder.append(name);
-		builder.append(", questions=");
-		builder.append(questions);
-		builder.append("]");
-		return builder.toString();
-	}
+//	ToString
+//	@Override
+//	public String toString() {
+//		StringBuilder builder = new StringBuilder();
+//		builder.append("Quiz [name=");
+//		builder.append(name);
+//		builder.append(", questions=");
+//		builder.append(questions.size());
+//		builder.append("]");
+//		return builder.toString();
+//	}
 	
 
 }

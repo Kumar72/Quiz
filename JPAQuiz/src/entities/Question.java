@@ -82,8 +82,8 @@ public class Question {
 		builder.append(question);
 		builder.append(", quiz=");
 		builder.append(quiz);
-		builder.append(", answers=");
-		builder.append(answers);
+//		builder.append(", answers=");
+//		builder.append(answers);
 		builder.append("]");
 		return builder.toString();
 	}

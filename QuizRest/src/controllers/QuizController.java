@@ -37,12 +37,14 @@ public class QuizController {
 	//DONE
 	@RequestMapping(value="quizzes", method=RequestMethod.GET)
 	public List<Quiz> index() {
-		return qDao.index();
+		List<Quiz> quizzes = qDao.index();
+		System.out.println(quizzes.size());
+		return quizzes;
 	}
 	
 	//DONE
 	@RequestMapping(value="quizzes/{quizId}", method=RequestMethod.GET)
-	public Quiz show(int quizId) {
+	public Quiz show(@PathVariable int quizId) {
 		return qDao.show(quizId);
 	}
 	
