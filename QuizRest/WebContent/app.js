@@ -4,11 +4,15 @@ $(document).ready(function(){
 	config();
 });
 
-var home = function() {
-$('h1').on('click', function(){
+var reload = function() {
 	$('#main-table').remove();
 	$('#question-table').remove();
-		config();
+	config();
+}
+
+var home = function() {
+$('h1').on('click', function(){
+		reload();
 	})
 var bool = false;
 	$('#create').click(function(){
@@ -17,10 +21,13 @@ var bool = false;
 		if(!$createform.length){
 			console.log('in if');
 			createQuiz();
+			$('#create').text('Hide Quiz Option')
+			reload();
 		}
 		else{
 			$('#quiz-form').remove();
 			console.log('in else');
+			$('#create').text('Show Quiz Option')
 		}
 	
 	//	$('#quiz-form').toggle();
@@ -194,6 +201,7 @@ function createQuiz() {
 				data: JSON.stringify(quiz),
 				contentType: 'application/json'
 			}).done(function(data, status){
+				reload();
 				
 			}).fail(function(xhr, status, error){
 				console.log("done");
